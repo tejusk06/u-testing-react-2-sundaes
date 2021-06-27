@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import Options from "../Options";
 
-test("it displays image for each scoop from the server", () => {
+test("it displays image for each scoop from the server", async () => {
   render(<Options optionType="scoops" />);
 
   //   Find images $ sign in RegEx indicates that scoop is at the end
-  const scoopImages = screen.getAllByRole("img", { name: /scoop$/i });
+  const scoopImages = await screen.findAllByRole("img", { name: /scoop$/i });
   expect(scoopImages).toHaveLength(2);
 
   //   confirm alt text of images
